@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.square {
+	background-color: red;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
+
+.board {
+	display: grid;
+	background: lightgrey;
+	padding: 20px;
+	border-radius: 10px;
+	width: fit-content;
+	height: fit-content;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: center;
+	align-items: center;
+	gap: 30px;
+}
+
+.game-wrapper {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
