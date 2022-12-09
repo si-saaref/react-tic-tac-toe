@@ -55,24 +55,33 @@ export default function Board() {
 
 	const resetGamePlay = () => {
 		setFirstPlayerLine([]);
+		setSecondPlayerLine([]);
 	};
 
 	return (
 		<>
 			<div className='board'>
-				{Array(9)
-					.fill(null)
-					.map((el, id) => {
-						return (
-							<Square
-								id={id}
-								key={id}
-								onClick={() => firstPlayerTurn(id)}
-								oActive={firstPlayerLine.includes(id)}
-								xActive={secondPlayerLine.includes(id)}
-							/>
-						);
-					})}
+				<div className='board-info-section'>
+					<h1>AMADIKETU</h1>
+					<button className='btn-reset' onClick={resetGamePlay}>
+						Reset
+					</button>
+				</div>
+				<div className='board-square-section'>
+					{Array(9)
+						.fill(null)
+						.map((el, id) => {
+							return (
+								<Square
+									id={id}
+									key={id}
+									onClick={() => firstPlayerTurn(id)}
+									oActive={firstPlayerLine.includes(id)}
+									xActive={secondPlayerLine.includes(id)}
+								/>
+							);
+						})}
+				</div>
 			</div>
 			{/* <Square /> */}
 		</>
