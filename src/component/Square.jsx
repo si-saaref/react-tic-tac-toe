@@ -7,8 +7,8 @@ export default function Square({ onClick, oActive, xActive }) {
 
 	return (
 		<div className='square' onClick={onClick}>
-			{oActive && <p>O</p>}
-			{xActive && <p>X</p>}
+			{oActive && <span className='oActive'>O</span>}
+			{xActive && <span className='xActive'>X</span>}
 		</div>
 	);
 }

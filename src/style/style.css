@@ -3,18 +3,46 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: kalam-bold;
+	src: url('../assets/font/Kalam/Kalam-Bold.ttf');
+}
+
+@font-face {
+	font-family: kalam-light;
+	src: url('../assets/font/Kalam/Kalam-Light.ttf');
+}
+
 .square {
 	background-color: red;
 	width: 150px;
 	height: 150px;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
+/* ! BOARD SECTION */
 .board {
-	display: grid;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 	background: lightgrey;
 	padding: 20px;
 	border-radius: 10px;
+}
+
+.btn-reset {
+	cursor: pointer;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+		sans-serif;
+	font-size: 2rem;
+	border-radius: 10px;
+}
+
+.board-square-section {
+	display: grid;
 	width: fit-content;
 	height: fit-content;
 	grid-template-columns: repeat(3, 1fr);
@@ -28,4 +56,14 @@ body {
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
+}
+
+/* ! SQUARE INSIDE */
+.xActive,
+.oActive {
+	font-family: 'kalam-bold';
+	transition: 1s;
+	font-size: 7rem;
+	margin: 0;
+	padding: 0;
 }
