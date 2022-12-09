@@ -1,7 +1,7 @@
 import Square from './Square';
-import '../style/style.css';
 import { useEffect, useRef, useState } from 'react';
 import { getRandInt } from '../utils/utils';
+import '../style/style.css';
 
 export default function Board() {
 	const [firstPlayerLine, setFirstPlayerLine] = useState([]);
@@ -21,21 +21,21 @@ export default function Board() {
 	}, [firstPlayerLine]);
 
 	const checkWinner = () => {
-		if (firstPlayerLine.length === 4) {
+		if (firstPlayerLine.length === 4 || secondPlayerLine.length === 4) {
 			resetGamePlay();
 			return;
 		}
 
 		setTimeout(() => {
-			secondPlayerTurn();
+			// secondPlayerTurn();
+			firstPlayerLine.length !== 0 && secondPlayerTurn();
 		}, 1000);
 	};
 
 	const firstPlayerTurn = (id) => {
-		setFirstPlayerLine([...firstPlayerLine, id]);
+		firstPlayerLine.length < 4 && setFirstPlayerLine([...firstPlayerLine, id]);
 	};
 
-	// TODO : SET DISABLED BOARD BEFORE SECONDPLAYER TURN
 	const secondPlayerTurn = () => {
 		let idSquare = getRandInt(0, 8);
 		console.log(
@@ -45,7 +45,7 @@ export default function Board() {
 			secondPlayerLine,
 			idSquare
 		);
-		while (firstPlayerLine.includes(idSquare)) {
+		while (firstPlayerLine.includes(idSquare) || secondPlayerLine.includes(idSquare)) {
 			idSquare = getRandInt(0, 8);
 		}
 		// idSquare =  ? getRandInt(0, 8) : idSquare;
@@ -68,6 +68,7 @@ export default function Board() {
 					</button>
 				</div>
 				<div className='board-square-section'>
+					{secondPlayerLine.length === 3 && <div className='blocker'></div>}
 					{Array(9)
 						.fill(null)
 						.map((el, id) => {
@@ -87,3 +88,6 @@ export default function Board() {
 		</>
 	);
 }
+
+// TODO : set mode PvP
+// TODO : SET DISABLED BOARD BEFORE SECONDPLAYER TURN
