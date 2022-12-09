@@ -42,6 +42,7 @@ body {
 }
 
 .board-square-section {
+	position: relative;
 	display: grid;
 	width: fit-content;
 	height: fit-content;
@@ -49,6 +50,16 @@ body {
 	justify-items: center;
 	align-items: center;
 	gap: 30px;
+	padding: 10px;
+}
+
+.blocker {
+	position: absolute;
+	background: black;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
 }
 
 .game-wrapper {
