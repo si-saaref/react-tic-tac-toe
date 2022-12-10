@@ -1,4 +1,11 @@
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
 	margin: 0;
 	padding: 0;
 }
@@ -60,6 +67,24 @@ body {
 	width: 100%;
 	height: 100%;
 	border-radius: 5px;
+}
+
+.mode-game-selection {
+	/* display: none; */
+	font-size: 2rem;
+}
+
+.board-winner-info-section {
+	display: flex;
+	justify-content: center;
+}
+
+.first-player-info,
+.second-player-info {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	/* flex-direction: column; */
 }
 
 .game-wrapper {
