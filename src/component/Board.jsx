@@ -50,6 +50,7 @@ export default function Board() {
 
 	const changeGameMode = (value) => {
 		setGameMode(value);
+		resetGamePlay();
 		console.log('GAME MODE =>', gameMode, value);
 	};
 
