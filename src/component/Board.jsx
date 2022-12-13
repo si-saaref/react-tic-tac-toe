@@ -63,8 +63,8 @@ export default function Board() {
 		<>
 			<div className='board'>
 				<div className='board-info-section'>
-					<h1>Ticatoee</h1>
-					<div className=''>
+					<h1 className='game-title'>Ticatoee</h1>
+					<div className='flex-justify-between'>
 						<button className='btn-reset' onClick={resetGamePlay}>
 							Reset
 						</button>
