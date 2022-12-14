@@ -137,6 +137,12 @@ p {
 	background-color: rgb(109, 109, 109);
 }
 
+.square:has(.oActive),
+.square:has(.xActive) {
+	pointer-events: none;
+	user-select: none;
+}
+
 /* ! FIXED */
 .flex-justify-between {
 	display: flex;
