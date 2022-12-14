@@ -1,11 +1,12 @@
 import Square from './Square';
 import { useEffect, useRef, useState } from 'react';
-import { getRandInt } from '../utils/utils';
+import { getRandInt, listIdWinner } from '../utils/utils';
 import '../style/style.css';
 
 export default function Board() {
 	const [firstPlayerLine, setFirstPlayerLine] = useState([]);
 	const [secondPlayerLine, setSecondPlayerLine] = useState([]);
+	const [winner, setWinner] = useState();
 	const [gameMode, setGameMode] = useState('computer');
 
 	const isFirstRender = useRef(true);
@@ -16,21 +17,38 @@ export default function Board() {
 			return;
 		}
 
-		checkWinner();
-		console.log('First Player =>', firstPlayerLine);
-		console.log('Second Player =>', secondPlayerLine);
-	}, [firstPlayerLine]);
-
-	const checkWinner = () => {
-		if (firstPlayerLine.length === 4 || secondPlayerLine.length === 4) {
-			resetGamePlay();
-			return;
-		}
-
 		setTimeout(() => {
 			// secondPlayerTurn();
 			firstPlayerLine.length !== 0 && secondPlayerTurn();
 		}, 1000);
+		// console.log('First Player =>', firstPlayerLine);
+		// console.log('Second Player =>', secondPlayerLine);
+	}, [firstPlayerLine]);
+
+	useEffect(() => {
+		if (firstPlayerLine.length === 3) {
+			const { firstStatus, secondStatus } = checkWinner();
+			firstStatus === true
+				? setWinner(gameMode === 'computer' ? 'You' : 'Player 1')
+				: secondStatus === true
+				? setWinner(gameMode === 'computer' ? 'Computer' : 'Player 2')
+				: setWinner('DRAW');
+		}
+	}, [secondPlayerLine]);
+
+	const checkWinner = () => {
+		// if () {
+		const firstStatus = listIdWinner.some((item) => {
+			return JSON.stringify(item) == JSON.stringify(firstPlayerLine.sort());
+		});
+		const secondStatus = listIdWinner.some(
+			(item) => JSON.stringify(item) == JSON.stringify(secondPlayerLine.sort())
+		);
+		// }
+		return {
+			firstStatus,
+			secondStatus,
+		};
 	};
 
 	const firstPlayerTurn = (id) => {
@@ -95,7 +113,11 @@ export default function Board() {
 					</div>
 				</div>
 				<div className='board-square-section'>
-					{secondPlayerLine.length === 3 && <div className='blocker'></div>}
+					{secondPlayerLine.length === 3 && (
+						<div className='blocker'>
+							<h1>{winner}</h1>
+						</div>
+					)}
 					{Array(9)
 						.fill(null)
 						.map((el, id) => {
