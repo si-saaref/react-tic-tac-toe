@@ -115,6 +115,7 @@ export default function Board() {
 				<div className='board-square-section'>
 					{secondPlayerLine.length === 3 && (
 						<div className='blocker'>
+							{winner !== 'DRAW' && <h1>The winner is</h1>}
 							<h1>{winner}</h1>
 						</div>
 					)}
