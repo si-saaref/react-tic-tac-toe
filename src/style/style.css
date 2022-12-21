@@ -22,6 +22,7 @@ p {
 
 .game-wrapper {
 	display: flex;
+	/* ! Using bgjar */
 	background-image: url('/src/assets/images/Sprinkle.svg');
 	height: 100vh;
 	justify-content: center;
@@ -32,7 +33,7 @@ p {
 .board {
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 15px;
 	background: #fff;
 	padding: 20px;
 	border-radius: 10px;
@@ -90,7 +91,7 @@ p {
 	border-radius: 5px;
 }
 
-.blocker > h1 {
+.blocker h1 {
 	font-size: 5rem;
 	color: white;
 }
@@ -115,7 +116,7 @@ p {
 }
 
 .game-title {
-	font-size: 4rem;
+	font-size: 3rem;
 }
 
 /* ! SQUARE INSIDE */
@@ -123,15 +124,15 @@ p {
 .oActive {
 	font-family: 'kalam-bold';
 	transition: 1s;
-	font-size: 7rem;
+	font-size: 4rem;
 	margin: 0;
 	padding: 0;
 }
 
 .square {
 	background-color: #f1f1f1;
-	width: 150px;
-	height: 150px;
+	width: 80px;
+	height: 80px;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
@@ -156,4 +157,113 @@ p {
 .flex-justify-between {
 	display: flex;
 	justify-content: space-between;
+}
+
+/* ? TYPEWRITER EFFECT TO DISPLAY WINNER */
+.typewriter-wrapper h1 {
+	width: fit-content;
+	overflow: hidden;
+	border-right: 0.15em solid orange;
+	font-size: 2.4rem;
+	white-space: nowrap;
+	margin: 0;
+	letter-spacing: 0.15em;
+	animation: typing 2.5s steps(20, end), blink-caret 0.75s step-end infinite;
+}
+
+.delay-animation {
+	animation-delay: 3.5s !important;
+	animation-name: showHide;
+}
+.typewriter-wrapper {
+	width: fit-content;
+}
+
+@keyframes showHide {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+	}
+
+	85% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: orange;
+	}
+}
+
+/* .fit-content {
+	width: fit-content;
+} */
+
+/* .type-effect {
+	display: block;
+	position: relative;
+	top: 50%;
+	width: 32%;
+	width: max-content Im !important;
+	margin: 0 auto;
+	border-right: 2px solid rgba(255, 0, 0, 0.75);
+	font-size: 180%;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	transform: translateY(-50%);
+}
+
+.anim-typewriter {
+	animation: typewriter 4s steps(44) 1s 1 normal both,
+		blinkTextCursor 500ms steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+	from {
+		width: 0;
+	}
+	to {
+		width: 32%;
+		width: max-content !important;
+	}
+}
+@keyframes blinkTextCursor {
+	from {
+		border-right-color: rgba(226, 7, 7, 0.75);
+	}
+	to {
+		border-right-color: transparent;
+	}
+} */
+
+.d-hide {
+	display: none;
+}
+
+.board-winner-info-section {
+	font-size: 0.8rem;
+}
+
+.board-info-section button,
+.board-info-section select {
+	font-size: 1rem;
 }

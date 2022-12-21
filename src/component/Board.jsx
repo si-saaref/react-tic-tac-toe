@@ -21,7 +21,7 @@ export default function Board() {
 			// secondPlayerTurn();
 			firstPlayerLine.length !== 0 && secondPlayerTurn();
 		}, 1000);
-		// console.log('First Player =>', firstPlayerLine);
+		console.log('WINNER =>', winner);
 		// console.log('Second Player =>', secondPlayerLine);
 	}, [firstPlayerLine]);
 
@@ -112,11 +112,20 @@ export default function Board() {
 						{/* <h2>Score</h2> */}
 					</div>
 				</div>
+				{/* <div className={winner === undefined ? '' : 'typewriter-wrapper'}>
+					{winner !== 'DRAW' && (
+							<h1 className={winner !== undefined ? '' : 'd-hide'}>The winner is</h1>
+						)}
+				</div> */}
+
 				<div className='board-square-section'>
 					{secondPlayerLine.length === 3 && (
 						<div className='blocker'>
-							{winner !== 'DRAW' && <h1>The winner is</h1>}
-							<h1>{winner}</h1>
+							<div className={winner === undefined ? '' : 'typewriter-wrapper'}>
+								<h1 className={winner !== undefined ? '' : 'd-hide'}>
+									{winner === 'DRAW' ? 'DRAW' : `${winner} Win`}
+								</h1>
+							</div>
 						</div>
 					)}
 					{Array(9)
