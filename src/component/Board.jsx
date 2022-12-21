@@ -75,6 +75,7 @@ export default function Board() {
 	const resetGamePlay = () => {
 		setFirstPlayerLine([]);
 		setSecondPlayerLine([]);
+		setWinner(undefined);
 	};
 
 	return (

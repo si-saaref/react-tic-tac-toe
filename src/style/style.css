@@ -123,6 +123,7 @@ p {
 .xActive,
 .oActive {
 	font-family: 'kalam-bold';
+	font-display: block;
 	transition: 1s;
 	font-size: 4rem;
 	margin: 0;
