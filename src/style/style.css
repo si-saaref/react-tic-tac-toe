@@ -293,3 +293,11 @@ p {
 .select-wrapper {
 	width: 150px;
 }
+
+.select__input {
+	color: transparent !important;
+}
+
+.select__input:focus {
+	outline: none;
+}
