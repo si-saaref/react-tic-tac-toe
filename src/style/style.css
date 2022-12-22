@@ -269,3 +269,7 @@ p {
 .board-info-section select {
 	font-size: 1rem;
 }
+
+.select-wrapper {
+	width: 150px;
+}
