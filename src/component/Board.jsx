@@ -1,6 +1,7 @@
 import Square from './Square';
 import { useEffect, useRef, useState } from 'react';
 import { getRandInt, listIdWinner } from '../utils/utils';
+import Select from 'react-select';
 import '../style/style.css';
 
 export default function Board() {
@@ -111,7 +112,7 @@ export default function Board() {
 						<button className='btn-reset' onClick={() => resetGamePlay('full')}>
 							Reset
 						</button>
-						<select
+						{/* <select
 							name=''
 							id=''
 							className='mode-game-selection'
@@ -124,7 +125,29 @@ export default function Board() {
 									</option>
 								);
 							})}
-						</select>
+						</select> */}
+						<div className='select-wrapper'>
+							<Select
+								options={gameModeOptions}
+								defaultValue={gameModeOptions[0]}
+								onChange={(e) => changeGameMode(e.value)}
+								menuPlacement='auto'
+								menuPosition='fixed'
+								isSearchable={true}
+								name='gameMode'
+								theme={(theme) => ({
+									...theme,
+									borderRadius: 5,
+									borderColor: 'black',
+									colors: {
+										...theme.colors,
+										text: 'black',
+										primary25: 'lightgrey',
+										primary: 'grey',
+									},
+								})}
+							/>
+						</div>
 					</div>
 				</div>
 				<div className='board-winner-info-section'>
@@ -172,6 +195,11 @@ export default function Board() {
 		</>
 	);
 }
+
+const gameModeOptions = [
+	{ value: 'computer', label: 'Computer' },
+	{ value: 'pvp', label: 'PvP' },
+];
 
 // TODO : set mode PvP
 // TODO : SET DISABLED BOARD BEFORE SECONDPLAYER TURN
