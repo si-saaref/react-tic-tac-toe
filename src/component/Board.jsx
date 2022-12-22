@@ -1,10 +1,8 @@
 import Square from './Square';
-import { useEffect, useRef, useState } from 'react';
 import { getRandInt, listIdWinner } from '../utils/utils';
 import Select from 'react-select';
-import '../style/style.css';
+import '../assets/style/style.css';
 import { useEffect, useRef, useState } from 'react';
-import { getRandInt } from '../utils/utils';
 
 export default function Board() {
 	const [firstPlayerLine, setFirstPlayerLine] = useState([]);

@@ -16,13 +16,13 @@ p {
 
 @font-face {
 	font-family: kalam-bold;
-	src: url('../assets/font/Kalam/Kalam-Bold.ttf');
+	src: url('../font/Kalam/Kalam-Bold.ttf');
 	font-display: block;
 }
 
 @font-face {
 	font-family: kalam-light;
-	src: url('../assets/font/Kalam/Kalam-Light.ttf');
+	src: url('../font/Kalam/Kalam-Light.ttf');
 	font-display: block;
 }
 
