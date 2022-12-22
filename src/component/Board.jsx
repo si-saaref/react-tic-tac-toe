@@ -146,6 +146,7 @@ export default function Board() {
 										primary: 'grey',
 									},
 								})}
+								classNamePrefix='select'
 							/>
 						</div>
 					</div>
