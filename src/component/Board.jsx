@@ -1,7 +1,7 @@
 import Square from './Square';
 import { getRandInt, listIdWinner } from '../utils/utils';
 import Select from 'react-select';
-import '../style/style.css';
+import '../assets/style/style.css';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Board() {
