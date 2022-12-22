@@ -28,13 +28,17 @@ export default function Board() {
 	useEffect(() => {
 		if (firstPlayerLine.length === 3) {
 			const { firstStatus, secondStatus } = checkWinner();
-			firstStatus === true
+			console.log({ firstStatus, secondStatus }, firstStatus && secondStatus);
+			firstStatus && secondStatus
+				? setWinner('DRAW')
+				: firstStatus
 				? (setWinner(gameMode === 'computer' ? 'You' : 'Player 1'),
 				  setScore({ ...score, p1: score.p1 + 1 }))
-				: secondStatus === true
+				: secondStatus
 				? (setWinner(gameMode === 'computer' ? 'Computer' : 'Player 2'),
 				  setScore({ ...score, p2: score.p2 + 1 }))
 				: setWinner('DRAW');
+
 			setTimeout(() => {
 				resetGamePlay();
 			}, 3000);
@@ -50,6 +54,12 @@ export default function Board() {
 			(item) => JSON.stringify(item) == JSON.stringify(secondPlayerLine.sort())
 		);
 		// }
+		if (firstStatus === false && secondStatus === false) {
+			return {
+				firstStatus: true,
+				secondStatus: true,
+			};
+		}
 		return {
 			firstStatus,
 			secondStatus,
