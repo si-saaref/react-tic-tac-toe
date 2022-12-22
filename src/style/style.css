@@ -10,14 +10,20 @@ p {
 	padding: 0;
 }
 
+* {
+	user-select: none;
+}
+
 @font-face {
 	font-family: kalam-bold;
 	src: url('../assets/font/Kalam/Kalam-Bold.ttf');
+	font-display: block;
 }
 
 @font-face {
 	font-family: kalam-light;
 	src: url('../assets/font/Kalam/Kalam-Light.ttf');
+	font-display: block;
 }
 
 .game-wrapper {
@@ -40,24 +46,32 @@ p {
 }
 
 .btn-reset {
+	position: relative;
+	display: inline-block;
 	cursor: pointer;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
 		Verdana, sans-serif;
 	font-size: 1.5rem;
-	padding: 4px 10px;
-	border-radius: 4px;
-	border: 2px solid rgb(133, 133, 133);
+	padding: 4px 18px;
+	border-radius: 8px;
+	/* border: none; */
+	border: 0.1px solid #ff3f00;
 	color: rgb(133, 133, 133);
 	background-color: #fff;
 	outline: none;
-	transition: 0.4s;
+	transition: ease-out 0.78s;
+	box-shadow: inset 0 0 0 0 #ff3f00;
 }
 
 .btn-reset:hover {
-	background-color: red;
+	/* background-color: #FF3F00; */
 	/* background-color: black; */
 	color: white;
-	border: 2px solid black;
+	box-shadow: inset 0 -100px 0 0 #ff3f00;
+	/* border: 2px solid black; */
+}
+.btn-reset:active {
+	transform: scale(0.9);
 }
 
 .mode-game-selection {
@@ -84,11 +98,17 @@ p {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background: rgba(0, 0, 0, 0.5);
 	/* opacity: 0.5; */
 	width: 100%;
 	height: 100%;
-	border-radius: 5px;
+	/* border-radius: 5px;
+	background: rgba(0, 0, 0, 0.5); */
+	background: rgba(0, 0, 0, 0.567);
+	box-shadow: 0 2px 10px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .blocker h1 {
