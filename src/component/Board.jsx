@@ -7,6 +7,10 @@ export default function Board() {
 	const [firstPlayerLine, setFirstPlayerLine] = useState([]);
 	const [secondPlayerLine, setSecondPlayerLine] = useState([]);
 	const [winner, setWinner] = useState();
+	const [score, setScore] = useState({
+		p1: 0,
+		p2: 0,
+	});
 	const [gameMode, setGameMode] = useState('computer');
 
 	const isFirstRender = useRef(true);
@@ -17,11 +21,7 @@ export default function Board() {
 			return;
 		}
 
-		setTimeout(() => {
-			// secondPlayerTurn();
-			firstPlayerLine.length !== 0 && secondPlayerTurn();
-		}, 1000);
-		console.log('WINNER =>', winner);
+		firstPlayerLine.length !== 0 && gameMode === 'computer' && secondPlayerTurn();
 		// console.log('Second Player =>', secondPlayerLine);
 	}, [firstPlayerLine]);
 
@@ -29,10 +29,15 @@ export default function Board() {
 		if (firstPlayerLine.length === 3) {
 			const { firstStatus, secondStatus } = checkWinner();
 			firstStatus === true
-				? setWinner(gameMode === 'computer' ? 'You' : 'Player 1')
+				? (setWinner(gameMode === 'computer' ? 'You' : 'Player 1'),
+				  setScore({ ...score, p1: score.p1 + 1 }))
 				: secondStatus === true
-				? setWinner(gameMode === 'computer' ? 'Computer' : 'Player 2')
+				? (setWinner(gameMode === 'computer' ? 'Computer' : 'Player 2'),
+				  setScore({ ...score, p2: score.p2 + 1 }))
 				: setWinner('DRAW');
+			setTimeout(() => {
+				resetGamePlay();
+			}, 3000);
 		}
 	}, [secondPlayerLine]);
 
@@ -52,7 +57,9 @@ export default function Board() {
 	};
 
 	const firstPlayerTurn = (id) => {
-		firstPlayerLine.length < 4 && setFirstPlayerLine([...firstPlayerLine, id]);
+		firstPlayerLine.length !== secondPlayerLine.length
+			? firstPlayerLine.length <= 3 && setSecondPlayerLine([...secondPlayerLine, id])
+			: firstPlayerLine.length <= 3 && setFirstPlayerLine([...firstPlayerLine, id]);
 	};
 
 	const secondPlayerTurn = () => {
@@ -62,7 +69,11 @@ export default function Board() {
 			idSquare = getRandInt(0, 8);
 		}
 		// idSquare =  ? getRandInt(0, 8) : idSquare;
-		setSecondPlayerLine([...secondPlayerLine, idSquare]);
+		// setSecondPlayerLine([...secondPlayerLine, idSquare]);
+		setTimeout(() => {
+			// secondPlayerTurn();
+			firstPlayerLine.length !== 0 && setSecondPlayerLine([...secondPlayerLine, idSquare]);
+		}, 1000);
 		console.log('SECOND PLAYER TURN ID => ', idSquare);
 	};
 
@@ -72,7 +83,10 @@ export default function Board() {
 		console.log('GAME MODE =>', gameMode, value);
 	};
 
-	const resetGamePlay = () => {
+	const resetGamePlay = (type = '') => {
+		if (type === 'full') {
+			setScore({ p1: 0, p2: 0 });
+		}
 		setFirstPlayerLine([]);
 		setSecondPlayerLine([]);
 		setWinner(undefined);
@@ -84,7 +98,7 @@ export default function Board() {
 				<div className='board-info-section'>
 					<h1 className='game-title'>Ticatoee</h1>
 					<div className='flex-justify-between'>
-						<button className='btn-reset' onClick={resetGamePlay}>
+						<button className='btn-reset' onClick={() => resetGamePlay('full')}>
 							Reset
 						</button>
 						<select
@@ -106,11 +120,11 @@ export default function Board() {
 				<div className='board-winner-info-section'>
 					<div className='first-player-info'>
 						<h1>{gameMode === 'computer' ? 'You' : 'Player 1'}</h1>
-						{/* <h2>Score</h2> */}
+						<h2>{score.p1}</h2>
 					</div>
 					<div className='second-player-info'>
 						<h1>{gameMode === 'computer' ? 'Computer' : 'Player 2'}</h1>
-						{/* <h2>Score</h2> */}
+						<h2>{score.p2}</h2>
 					</div>
 				</div>
 				{/* <div className={winner === undefined ? '' : 'typewriter-wrapper'}>
