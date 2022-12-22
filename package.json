@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "0.1.0",
 	"type": "module",
-	"homepage": "http://si-saaref.github.io/react-tic-tac-toe",
+	"homepage": "https://si-saaref.github.io/react-tic-tac-toe",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
