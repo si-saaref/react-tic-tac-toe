@@ -301,3 +301,10 @@ p {
 .select__input:focus {
 	outline: none;
 }
+
+@media only screen and (max-width: 400px) {
+	.square {
+		width: 50px;
+		height: 50px;
+	}
+}
